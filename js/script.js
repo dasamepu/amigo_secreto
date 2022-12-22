@@ -25,5 +25,5 @@ form.addEventListener('submit', (event) => {
 const name1 = names[Math.floor(Math.random() * names.length)];
 const name2 = names[Math.floor(Math.random() * names.length)];
 
-// Print the match to the console
-console.log("Match: " + name1 + " and " + name2);
+// Print the match to the div element
+document.querySelector('#result').innerHTML = "Match: " + name1 + " and " + name2;
