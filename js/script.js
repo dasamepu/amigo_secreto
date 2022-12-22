@@ -19,11 +19,11 @@ form.addEventListener('submit', (event) => {
 
   // Clear the input field
   document.querySelector('#name').value = '';
+
+  // Select and match two random names from the array
+  const name1 = names[Math.floor(Math.random() * names.length)];
+  const name2 = names[Math.floor(Math.random() * names.length)];
+
+  // Print the match to the div element
+  document.querySelector('#result').innerHTML = "Match: " + name1 + " and " + name2;
 });
-
-// Select and match two random names from the array
-const name1 = names[Math.floor(Math.random() * names.length)];
-const name2 = names[Math.floor(Math.random() * names.length)];
-
-// Print the match to the div element
-document.querySelector('#result').innerHTML = "Match: " + name1 + " and " + name2;
