@@ -23,25 +23,36 @@ form.addEventListener('submit', (event) => {
   // Initialize a string to store the matches
   let matches = '';
 
-  // Create a copy of the array to use for selecting names
-  let remaining = [...names];
+  // Initialize an array to store the names that have been used
+  let used = [];
 
   // Select and match multiple pairs of names from the array
-  while (remaining.length > 0) {
+  for (let i = 0; i < names.length; i++) {
     // Select a random name from the array
-    const index = Math.floor(Math.random() * remaining.length);
-    const name1 = remaining[index];
+    let name1 = names[Math.floor(Math.random() * names.length)];
 
-    // Remove the name from the array
-    remaining = remaining.filter((n) => n !== name1);
+    // Check if the name has already been used
+    while (used.includes(name1)) {
+      // If the name has been used, select a different name
+      name1 = names[Math.floor(Math.random() * names.length)];
+    }
 
-    // Select a random name from the remaining names
-    const index2 = Math.floor(Math.random() * remaining.length);
-    const name2 = remaining[index2];
+    // Add the name to the used array
+    used.push(name1);
 
-    // Remove the name from the array
-    remaining = remaining.filter((n) => n !== name2);
+    // Select a random name from the array
+    let name2 = names[Math.floor(Math.random() * names.length)];
 
+    // Check if the name has already been used
+    while (used.includes(name2)) {
+      // If the name has been used, select a different name
+      name2 = names[Math.floor(Math.random() * names.length)];
+    }
+
+    // Add the name to the used array
+    used.push(name2);
+
+    // Add the match to the string
     matches += "Match: " + name1 + " and " + name2 + "<br>";
   }
 
