@@ -20,10 +20,16 @@ form.addEventListener('submit', (event) => {
   // Clear the input field
   document.querySelector('#name').value = '';
 
-  // Select and match two random names from the array
-  const name1 = names[Math.floor(Math.random() * names.length)];
-  const name2 = names[Math.floor(Math.random() * names.length)];
+  // Initialize a string to store the matches
+  let matches = '';
 
-  // Print the match to the div element
-  document.querySelector('#result').innerHTML = "Match: " + name1 + " and " + name2;
+  // Select and match multiple pairs of names from the array
+  for (let i = 0; i < names.length; i++) {
+    const name1 = names[Math.floor(Math.random() * names.length)];
+    const name2 = names[Math.floor(Math.random() * names.length)];
+    matches += "Match " + (i + 1) + ": " + name1 + " and " + name2 + "<br>";
+  }
+
+  // Print the matches to the div element
+  document.querySelector('#result').innerHTML = matches;
 });
