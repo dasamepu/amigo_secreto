@@ -23,13 +23,26 @@ form.addEventListener('submit', (event) => {
   // Initialize a string to store the matches
   let matches = '';
 
+  // Create a copy of the array to use for selecting names
+  let remaining = [...names];
+
   // Select and match multiple pairs of names from the array
-  for (let i = 0; i < names.length; i++) {
-    // Create a copy of the array without the current name
-    const otherNames = names.filter((n) => n !== names[i]);
-    const name1 = names[i];
-    const name2 = otherNames[Math.floor(Math.random() * otherNames.length)];
-    matches += "Match " + (i + 1) + ": " + name1 + " and " + name2 + "<br>";
+  while (remaining.length > 0) {
+    // Select a random name from the array
+    const index = Math.floor(Math.random() * remaining.length);
+    const name1 = remaining[index];
+
+    // Remove the name from the array
+    remaining = remaining.filter((n) => n !== name1);
+
+    // Select a random name from the remaining names
+    const index2 = Math.floor(Math.random() * remaining.length);
+    const name2 = remaining[index2];
+
+    // Remove the name from the array
+    remaining = remaining.filter((n) => n !== name2);
+
+    matches += "Match: " + name1 + " and " + name2 + "<br>";
   }
 
   // Print the matches to the div element
