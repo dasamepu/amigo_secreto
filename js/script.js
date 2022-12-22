@@ -25,8 +25,10 @@ form.addEventListener('submit', (event) => {
 
   // Select and match multiple pairs of names from the array
   for (let i = 0; i < names.length; i++) {
-    const name1 = names[Math.floor(Math.random() * names.length)];
-    const name2 = names[Math.floor(Math.random() * names.length)];
+    // Create a copy of the array without the current name
+    const otherNames = names.filter((n) => n !== names[i]);
+    const name1 = names[i];
+    const name2 = otherNames[Math.floor(Math.random() * otherNames.length)];
     matches += "Match " + (i + 1) + ": " + name1 + " and " + name2 + "<br>";
   }
 
